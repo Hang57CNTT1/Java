@@ -1,3 +1,7 @@
+
+import java.util.ArrayList;
+import javax.swing.ListModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -28,34 +32,92 @@ public class BaiTapForm85 extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jSplitPane2 = new javax.swing.JSplitPane();
+        panelsum = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtInput = new javax.swing.JTextField();
+        btnAdd = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
+        btnThoat = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listName = new javax.swing.JList<>();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "An ", "Nam" };
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(jList1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 60, -1));
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hoa", "Mai", "Đào", "Nở" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        panelsum.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("Input Name:");
+        panelsum.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 13, -1, -1));
+        panelsum.add(txtInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 190, -1));
+
+        btnAdd.setText("Add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                btnAddActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 130, 30));
+        panelsum.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 70, -1));
+
+        btnXoa.setText("Remove");
+        panelsum.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
+
+        btnThoat.setText("Edit");
+        panelsum.add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 60, -1));
+
+        jSplitPane2.setRightComponent(panelsum);
+
+        listName.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane2.setViewportView(listName);
+
+        jSplitPane2.setLeftComponent(jScrollPane2);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSplitPane2)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+        //Lấy về model
+        ListModel dsTen = listName.getModel();
+        //từ model sang mảng
+//        int i;
+//        String[] mten =  new String[dsTen.getSize()+1];
+//        for( i =0; i<dsTen.getSize(); i++)
+//            mten[i] =dsTen.getElementAt(i).toString();
+//        //thêm vào cuối
+//        mten[i ] = txtInput.getText();
+//        //Cập nhật JList
+            //Dùng arraylist
+        ArrayList<String> arrTen = new ArrayList<>();
+        int i=0;
+        for(i=0;i<dsTen.getSize();i++)
+        {   String ten = dsTen.getElementAt(i).toString();
+            arrTen.add(ten);
+        }
+        arrTen.add(txtInput.getText());
+        //Chuyển sang kiểu mảng để đưa vào JList
+        Object[] mten =arrTen.toArray();
+        listName.setListData((String[]) ( mten));
+    }//GEN-LAST:event_btnAddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -93,8 +155,16 @@ public class BaiTapForm85 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnThoat;
+    private javax.swing.JButton btnXoa;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSplitPane jSplitPane2;
+    private javax.swing.JList<String> listName;
+    private javax.swing.JPanel panelsum;
+    private javax.swing.JTextField txtInput;
     // End of variables declaration//GEN-END:variables
 }

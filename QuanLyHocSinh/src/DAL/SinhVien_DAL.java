@@ -8,39 +8,40 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import GUI.SinhVien_GUI;
+import java.sql.ResultSet;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Hang
  */
 public class SinhVien_DAL {
+
+//    private static boolean txtUser;
+//    private static boolean txtHoSV;
   static public void ThemSV(char operation,Integer id,String hosv, String tensv,
                                     String gt,String ns, String phone, String diachi)
     {
-        Connection con = DBConnect.MoKetNoi();
-            
+           Connection con = DBConnect.MoKetNoi();
+           java.sql.PreparedStatement ps ;
         
         
         //i 
         if(operation == 'i')
         {
             try {
-              //  StringBuffer query = new StringBuffer();
-                //query.append("");
-                
-                String sql = "INSERT INTO hocsinh(MaHS, HoHS, TenHS, GioiTinh, NgaySinh, Phone, DiaChi) VALUES (?,?,?,?,?,?,?)";
-                java.sql.PreparedStatement ps = con.prepareStatement(sql.toString());
-               // ps.executeQuery();
+                ps = con.prepareStatement("INSERT INTO hocsinh(HoHS, TenHS, GioiTinh, NgaySinh, Phone, DiaChi) VALUES (?,?,?,?,?,?)");
                 ps.setString(1, hosv);
                 ps.setString(2, tensv);
                 ps.setString(3, gt);
                 ps.setString(4, ns);
                 ps.setString(5, phone);
                 ps.setString(6, diachi);
-                con.close();
                 if(ps.executeUpdate() > 0)
                 {
-                    JOptionPane.showMessageDialog(null, " Thêm thành công!");
+                    JOptionPane.showMessageDialog(null, " Thêm Sinh Viên Thành Công!");
                     con.close();
                 }
             } catch (SQLException ex) {
@@ -49,4 +50,88 @@ public class SinhVien_DAL {
             }
         }
     }
+  
+  static public void SuaSV(char operation,Integer id,String hosv, String tensv,
+                                    String gt,String ns, String phone, String diachi)
+    {
+           Connection con = DBConnect.MoKetNoi();
+           java.sql.PreparedStatement ps ;
+        
+        
+        //i 
+        if(operation == 'u')
+        {
+            try {
+                ps = con.prepareStatement("UPDATE `hocsinh` SET `HoHS`= ?,`TenHS`= ?,`GioiTinh`= ?,`NgaySinh`= ?,`Phone`= ?,`DiaChi`= ? WHERE MaHS = ?");
+                ps.setString(1, hosv);
+                ps.setString(2, tensv);
+                ps.setString(3, gt);
+                ps.setString(4, ns);
+                ps.setString(5, phone);
+                ps.setString(6, diachi);
+                ps.setInt(7, id);
+                if(ps.executeUpdate() > 0)
+                {
+                    JOptionPane.showMessageDialog(null, " Sửa Sinh Viên Thành Công!");
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SinhVien_DAL.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+   static public void XoaSV(char operation,Integer id,String hosv, String tensv,
+                                    String gt,String ns, String phone, String diachi)
+    {
+           Connection con = DBConnect.MoKetNoi();
+           java.sql.PreparedStatement ps ;
+        
+        
+        //i 
+        if(operation == 'd')
+        {
+            try {
+                ps = con.prepareStatement("DELETE FROM `hocsinh` WHERE `MaHS` = ?");
+               ps.setInt(1, id);
+                if(ps.executeUpdate() > 0)
+                {
+                    JOptionPane.showMessageDialog(null, " Xóa Sinh Viên thành công!");
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SinhVien_DAL.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+  public  void BangSinhVien(JTable table,String valueToSearch)
+  {
+      Connection con = DBConnect.MoKetNoi();
+      java.sql.PreparedStatement ps ;
+      try {
+          //truy van mysql
+          ps = con.prepareStatement("SELECT * FROM hocsinh WHERE CONCAT(HoHS,TenHS,Phone,DiaChi) LIKE ?");
+          ps.setString(1, "%"+valueToSearch+"%");
+          
+          ResultSet rs = ps.executeQuery();
+          //khai bao model
+          DefaultTableModel model = (DefaultTableModel) table.getModel();
+          Object[] row;
+          //gan gia tri cho model 
+          while(rs.next()){
+                row = new Object[7];
+                row[0] = rs.getInt(1);
+                row[1] = rs.getString(2);
+                row[2] = rs.getString(3);
+                row[3] = rs.getString(4);
+                row[4] = rs.getString(5);
+                row[5] = rs.getString(6);
+                row[6] = rs.getString(7);
+                
+                model.addRow(row);
+          }
+      } catch (SQLException ex) {
+          Logger.getLogger(SinhVien_DAL.class.getName()).log(Level.SEVERE, null, ex);
+      }
+  }
+ 
 }

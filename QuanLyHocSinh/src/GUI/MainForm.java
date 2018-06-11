@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Hang
@@ -16,6 +18,7 @@ public class MainForm extends javax.swing.JFrame {
      */
     public MainForm() {
         initComponents();
+        
     }
 
     /**
@@ -29,45 +32,49 @@ public class MainForm extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        lbl_DiemCount = new javax.swing.JLabel();
+        lbl_KHCount = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         lbl_SVCount = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menu_sv = new javax.swing.JMenu();
         jmenu_addsv = new javax.swing.JMenuItem();
+        menuQuanLi = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        menuThemKH = new javax.swing.JMenuItem();
+        MenuQuanLyKH = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trang Chủ");
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 255));
 
-        jlabel_Username.setFont(new java.awt.Font("Tahoma", 2, 30)); // NOI18N
+        jlabel_Username.setFont(new java.awt.Font("Britannic Bold", 2, 48)); // NOI18N
         jlabel_Username.setForeground(new java.awt.Color(153, 0, 153));
         jlabel_Username.setText("Welcome<#####>");
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 204));
 
-        lbl_DiemCount.setBackground(new java.awt.Color(255, 102, 102));
-        lbl_DiemCount.setFont(new java.awt.Font("Tahoma", 2, 30)); // NOI18N
-        lbl_DiemCount.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_DiemCount.setText("Số Điểm =");
+        lbl_KHCount.setBackground(new java.awt.Color(255, 102, 102));
+        lbl_KHCount.setFont(new java.awt.Font("Tahoma", 2, 30)); // NOI18N
+        lbl_KHCount.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_KHCount.setText("Số Lượng Khóa Học Hiện Hành =");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(151, 151, 151)
-                .addComponent(lbl_DiemCount, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(lbl_KHCount, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addComponent(lbl_DiemCount)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addGap(91, 91, 91)
+                .addComponent(lbl_KHCount)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(0, 204, 204));
@@ -83,7 +90,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(lbl_SVCount, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,13 +109,15 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jlabel_Username)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 380, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jlabel_Username, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 302, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -118,13 +127,12 @@ public class MainForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jlabel_Username))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(344, 344, 344)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(48, 48, 48)
+                        .addComponent(jlabel_Username)
+                        .addGap(248, 248, 248)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(188, Short.MAX_VALUE))
         );
 
@@ -145,9 +153,9 @@ public class MainForm extends javax.swing.JFrame {
         menu_sv.setIconTextGap(8);
 
         jmenu_addsv.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jmenu_addsv.setForeground(new java.awt.Color(0, 204, 102));
-        jmenu_addsv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Add User Male_26px.png"))); // NOI18N
-        jmenu_addsv.setText("Thêm");
+        jmenu_addsv.setForeground(new java.awt.Color(51, 153, 255));
+        jmenu_addsv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/users (2).png"))); // NOI18N
+        jmenu_addsv.setText("Thêm Sinh Viên");
         jmenu_addsv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmenu_addsvActionPerformed(evt);
@@ -155,7 +163,43 @@ public class MainForm extends javax.swing.JFrame {
         });
         menu_sv.add(jmenu_addsv);
 
+        menuQuanLi.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        menuQuanLi.setForeground(new java.awt.Color(0, 153, 255));
+        menuQuanLi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/group.png"))); // NOI18N
+        menuQuanLi.setText("Quản Lý Sinh Viên");
+        menuQuanLi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuQuanLiActionPerformed(evt);
+            }
+        });
+        menu_sv.add(menuQuanLi);
+
         jMenuBar1.add(menu_sv);
+
+        jMenu1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jMenu1.setForeground(new java.awt.Color(204, 0, 204));
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Training_48px.png"))); // NOI18N
+        jMenu1.setText("Khóa Học");
+        jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+
+        menuThemKH.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        menuThemKH.setForeground(new java.awt.Color(0, 153, 255));
+        menuThemKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/file.png"))); // NOI18N
+        menuThemKH.setText("Thêm Khóa Học");
+        menuThemKH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuThemKHActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuThemKH);
+
+        MenuQuanLyKH.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        MenuQuanLyKH.setForeground(new java.awt.Color(0, 153, 255));
+        MenuQuanLyKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/file_1.png"))); // NOI18N
+        MenuQuanLyKH.setText("Quản Lý Khóa Học");
+        jMenu1.add(MenuQuanLyKH);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -174,8 +218,34 @@ public class MainForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmenu_addsvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenu_addsvActionPerformed
-       new SinhVien_GUI().setVisible(true);
+        //Thêm thông tin sv
+       SinhVien_GUI sv = new SinhVien_GUI();
+         sv.setVisible(true);
+         sv.pack();
+         sv.setLocationRelativeTo(null);
+         //Chỉ tắt form thông tin sv
+         sv.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_jmenu_addsvActionPerformed
+
+    private void menuQuanLiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuQuanLiActionPerformed
+        // TODO add your handling code here:
+         QuanLySinhVien_GUI qlsv = new QuanLySinhVien_GUI();
+         qlsv.setVisible(true);
+         qlsv.pack();
+         qlsv.setLocationRelativeTo(null);
+         //Chỉ tắt form quản lí
+         qlsv.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_menuQuanLiActionPerformed
+
+    private void menuThemKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuThemKHActionPerformed
+        // TODO add your handling code here:
+         KhoaHoc_GUI kh = new KhoaHoc_GUI();
+         kh.setVisible(true);
+         kh.pack();
+         kh.setLocationRelativeTo(null);
+         //Chỉ tắt form thông tin sv
+         kh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_menuThemKHActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,15 +283,19 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuQuanLyKH;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     public static final javax.swing.JLabel jlabel_Username = new javax.swing.JLabel();
     private javax.swing.JMenuItem jmenu_addsv;
-    public static javax.swing.JLabel lbl_DiemCount;
+    public static javax.swing.JLabel lbl_KHCount;
     public static javax.swing.JLabel lbl_SVCount;
+    private javax.swing.JMenuItem menuQuanLi;
+    private javax.swing.JMenuItem menuThemKH;
     private javax.swing.JMenu menu_sv;
     // End of variables declaration//GEN-END:variables
 }

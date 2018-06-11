@@ -219,25 +219,24 @@ public class Login extends javax.swing.JFrame {
                  ResultSet rs = ps.executeQuery();
                  if(rs.next())
                  {
-                     MainForm mf = new MainForm();
-                     mf.setVisible(true);
-                     mf.pack();
-                     mf.setLocationRelativeTo(null);
-                     //full màn hình
-                     mf.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                     
+                        MainForm mf = new MainForm();
+                        mf.setVisible(true);
+                        mf.pack();
+                        this.setLocationRelativeTo(null);
+                        mf.setExtendedState(JFrame.MAXIMIZED_BOTH);
                      MainForm.jlabel_Username.setText("Welcome<"+txtUser.getText()+">");
                      //đếm số lượng sv đưa ra label
-                     MainForm.lbl_SVCount.setText("Số lượng Sinh Viên = "+Integer.toString(Main_DAL.countData("user")));
+                     MainForm.lbl_SVCount.setText("Số lượng Sinh Viên = "+Integer.toString(Main_DAL.countData("hocsinh")));
                     
                       //đếm số điểm tương ứng đưa ra label
-                     MainForm.lbl_DiemCount.setText("Số Điểm = "+Integer.toString(Main_DAL.countData("user")));
-                    this.dispose();
-//                     System.out.println("YES");
+                     MainForm.lbl_KHCount.setText("Số Lượng Khóa Học Hiện Hành = "+Integer.toString(Main_DAL.countData("khoahoc")));
+                     //tắt form login đi
+                     this.dispose();
+                    // JOptionPane.showMessageDialog(null, "Logged in successfully");
                  }
                  else
                  {
-                     System.out.println("NO");
+                      JOptionPane.showMessageDialog(null, "Login error, please check again!");
                  }
              } catch (SQLException ex) {
                  Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);

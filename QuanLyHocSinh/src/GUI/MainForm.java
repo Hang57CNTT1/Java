@@ -43,6 +43,9 @@ public class MainForm extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         menuThemKH = new javax.swing.JMenuItem();
         MenuQuanLyKH = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        menuThemDiem = new javax.swing.JMenuItem();
+        menuXoaSuaDiem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trang Chủ");
@@ -197,9 +200,43 @@ public class MainForm extends javax.swing.JFrame {
         MenuQuanLyKH.setForeground(new java.awt.Color(0, 153, 255));
         MenuQuanLyKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/file_1.png"))); // NOI18N
         MenuQuanLyKH.setText("Quản Lý Khóa Học");
+        MenuQuanLyKH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuQuanLyKHActionPerformed(evt);
+            }
+        });
         jMenu1.add(MenuQuanLyKH);
 
         jMenuBar1.add(jMenu1);
+
+        jMenu2.setForeground(new java.awt.Color(204, 0, 204));
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/score.png"))); // NOI18N
+        jMenu2.setText("Điểm");
+        jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+
+        menuThemDiem.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        menuThemDiem.setForeground(new java.awt.Color(0, 204, 255));
+        menuThemDiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/a- (1).png"))); // NOI18N
+        menuThemDiem.setText("Thêm Điểm");
+        menuThemDiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuThemDiemActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuThemDiem);
+
+        menuXoaSuaDiem.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        menuXoaSuaDiem.setForeground(new java.awt.Color(0, 204, 204));
+        menuXoaSuaDiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/refresh (1).png"))); // NOI18N
+        menuXoaSuaDiem.setText("Sửa/Xóa Điểm");
+        menuXoaSuaDiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuXoaSuaDiemActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuXoaSuaDiem);
+
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -247,6 +284,36 @@ public class MainForm extends javax.swing.JFrame {
          kh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_menuThemKHActionPerformed
 
+    private void MenuQuanLyKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuQuanLyKHActionPerformed
+        // TODO add your handling code here:
+         QuanLyKhoaHoc qlkh = new QuanLyKhoaHoc();
+         qlkh.setVisible(true);
+         qlkh.pack();
+         qlkh.setLocationRelativeTo(null);
+         //Chỉ tắt form quản lí
+         qlkh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_MenuQuanLyKHActionPerformed
+
+    private void menuXoaSuaDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuXoaSuaDiemActionPerformed
+            // TODO add your handling code here:
+             Diem_Update_GUI  updatediem = new Diem_Update_GUI();
+             updatediem.setVisible(true);
+             updatediem.setLocationRelativeTo(null);
+               updatediem.pack();
+             //Chỉ tắt form thông tin sv
+             updatediem.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_menuXoaSuaDiemActionPerformed
+
+    private void menuThemDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuThemDiemActionPerformed
+        // TODO add your handling code here:
+        Diem_GUI  td = new Diem_GUI();
+         td.setVisible(true);
+         td.setLocationRelativeTo(null);
+           td.pack();
+         //Chỉ tắt form thông tin sv
+         td.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_menuThemDiemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -286,6 +353,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuQuanLyKH;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -295,7 +363,9 @@ public class MainForm extends javax.swing.JFrame {
     public static javax.swing.JLabel lbl_KHCount;
     public static javax.swing.JLabel lbl_SVCount;
     private javax.swing.JMenuItem menuQuanLi;
+    private javax.swing.JMenuItem menuThemDiem;
     private javax.swing.JMenuItem menuThemKH;
+    private javax.swing.JMenuItem menuXoaSuaDiem;
     private javax.swing.JMenu menu_sv;
     // End of variables declaration//GEN-END:variables
 }

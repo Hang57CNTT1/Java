@@ -7,8 +7,11 @@ package GUI;
 
 import DAL.KhoaHoc_DAL;
 import DAL.Main_DAL;
+import static GUI.QuanLySinhVien_GUI.TableSV;
+import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,6 +23,7 @@ public class KhoaHoc_GUI extends javax.swing.JFrame {
      * Creates new form KhoaHoc_GUI
      */
     KhoaHoc_DAL kh_dal = new KhoaHoc_DAL();
+
     public KhoaHoc_GUI() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -148,16 +152,31 @@ public class KhoaHoc_GUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnThoatKHActionPerformed
 
+    public boolean verifText(){
+      if(txtTenKH.getText().equals("")  )
+      {
+          JOptionPane.showMessageDialog(null, "Chưa Nhập Thông Tin Khóa Học! ");
+          return false;
+      }
+      else
+          return true;
+    } 
     private void btnThemKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemKHActionPerformed
             if(!kh_dal.KiemTraTonTai(txtTenKH.getText())){
-                      String tenkh = txtTenKH.getText();
+                if(verifText()){
+                    String tenkh = txtTenKH.getText();
                       int hours = Integer.valueOf(SnipperTLKH.getValue().toString());
                       kh_dal.ThemKH('i', null, tenkh, hours);
                        //đếm số lượng khóa học đưa ra label
                         MainForm.lbl_KHCount.setText("Số lượng Khóa Học Hiện Hành = "+Integer.toString(Main_DAL.countData("khoahoc")));
+                      //tránh lặp lại thông tin. Click chuột phải cho table Khóa Học -> chọn Custemize code để chuyển chế độ public static cho bảng
+                        QuanLyKhoaHoc.Table_KH.setModel(new DefaultTableModel(null,new Object[]{"Mã Khóa Học","Tên Khóa Học","Thời gian Khóa Học"}));
+                        //sua thông tin kh hiện lên table của form QuanLyKhoaHoc_GUI
+                        kh_dal.BangKhoaHoc(QuanLyKhoaHoc.Table_KH);
             }
             else{
                 JOptionPane.showMessageDialog(null, "Khóa Học Đã Tồn Tại");
+            }
             }
            
     }//GEN-LAST:event_btnThemKHActionPerformed

@@ -19,7 +19,7 @@ public class DBConnect {
    private static final String hostName = "localhost";
    private static final String userName = "root";
    private static final String pass = "";
-    private static final String dbName = "quanlyhocsinh";
+    private static final String dbName = "quanlyhocvien";
     private static final String connectionUrl = "jdbc:mysql://"+hostName+":3306/"+ dbName;
     
     public  static  java.sql.Connection MoKetNoi()

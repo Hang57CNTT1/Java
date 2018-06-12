@@ -68,16 +68,16 @@ public class SinhVien_GUI extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
-        jLabel1.setText("Thông Tin Sinh Viên");
+        jLabel1.setText("Thông Tin Học Viên");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Họ Sinh Viên: ");
+        jLabel2.setText("Họ Học Viên: ");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Giới Tính: ");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("Tên Sinh Viên:");
+        jLabel4.setText("Tên Học Viên:");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Ngày Sinh:");
@@ -246,7 +246,7 @@ public class SinhVien_GUI extends javax.swing.JFrame {
         String tensv = txtTenSV.getText();
         String gt = "Nam";
         if(raNu.isSelected()){
-            gt = "Nữ";
+            gt = "Nu";
         }
         if(verifText()){
              SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -254,14 +254,12 @@ public class SinhVien_GUI extends javax.swing.JFrame {
             String ns = dateFormat.format(DCSV.getDate());
             String phone = txtSDT.getText();
             String diachi = txaDiaChi.getText();
-
-            SinhVien_DAL sv = new SinhVien_DAL();
             SinhVien_DAL.ThemSV('i', null, hosv, tensv, gt, ns, phone, diachi);
             //đếm số lượng sv đưa ra label
-            MainForm.lbl_SVCount.setText("Số lượng Sinh Viên = "+Integer.toString(Main_DAL.countData("hocsinh")));
+            MainForm.lbl_SVCount.setText("Số lượng Sinh Viên = "+Integer.toString(Main_DAL.countData("hocvien")));
             
             //tránh lặp lại thông tin
-            TableSV.setModel(new DefaultTableModel(null,new Object[]{"Mã Sinh Viên","Họ Sinh Viên","Tên Sinh Viên","Giới Tính","Ngày Sinh","Số Điện Thoại","Địa Chỉ"}));
+            TableSV.setModel(new DefaultTableModel(null,new Object[]{"Mã Học Viên","Họ HọcViên","Tên HọcViên","Giới Tính","Ngày Sinh","Số Điện Thoại","Địa Chỉ"}));
             //Thêm thông tin sv hiện lên table của form QuanLySinhVien_GUI
             sv_dal.BangSinhVien(QuanLySinhVien_GUI.TableSV, "");
         }

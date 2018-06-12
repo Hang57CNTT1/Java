@@ -226,7 +226,7 @@ public class Login extends javax.swing.JFrame {
                         mf.setExtendedState(JFrame.MAXIMIZED_BOTH);
                      MainForm.jlabel_Username.setText("Welcome<"+txtUser.getText()+">");
                      //đếm số lượng sv đưa ra label
-                     MainForm.lbl_SVCount.setText("Số lượng Sinh Viên = "+Integer.toString(Main_DAL.countData("hocsinh")));
+                     MainForm.lbl_SVCount.setText("Số Lượng Học Viên = "+Integer.toString(Main_DAL.countData("hocvien")));
                     
                       //đếm số điểm tương ứng đưa ra label
                      MainForm.lbl_KHCount.setText("Số Lượng Khóa Học Hiện Hành = "+Integer.toString(Main_DAL.countData("khoahoc")));

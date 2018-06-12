@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Study_NTU/Ki2_Nam3/JAVA/QuanLyHocSinh/src/GUI/SinhVien_GUI.java</file>
-            <file>file:/E:/Study_NTU/Ki2_Nam3/JAVA/QuanLyHocSinh/src/DAL/SinhVien_DAL.java</file>
-            <file>file:/E:/Study_NTU/Ki2_Nam3/JAVA/QuanLyHocSinh/src/GUI/Login.java</file>
-            <file>file:/E:/Study_NTU/Ki2_Nam3/JAVA/QuanLyHocSinh/src/GUI/MainForm.java</file>
+            <file>file:/E:/Study_NTU/Ki2_Nam3/JAVA/QuanLyHocSinh/src/GUI/QuanLySinhVien_GUI.java</file>
+            <file>file:/E:/Study_NTU/Ki2_Nam3/JAVA/QuanLyHocSinh/src/GUI/Diem_Update_GUI.java</file>
+            <file>file:/E:/Study_NTU/Ki2_Nam3/JAVA/QuanLyHocSinh/src/GUI/QuanLyKhoaHoc.java</file>
+            <file>file:/E:/Study_NTU/Ki2_Nam3/JAVA/QuanLyHocSinh/src/GUI/Diem_GUI.java</file>
         </group>
     </open-files>
 </project-private>

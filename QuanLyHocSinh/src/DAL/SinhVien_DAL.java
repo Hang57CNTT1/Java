@@ -32,7 +32,7 @@ public class SinhVien_DAL {
         if(operation == 'i')
         {
             try {
-                ps = con.prepareStatement("INSERT INTO hocsinh(HoHS, TenHS, GioiTinh, NgaySinh, Phone, DiaChi) VALUES (?,?,?,?,?,?)");
+                ps = con.prepareStatement("INSERT INTO `hocvien`( `HoHV`, `TenHV`, `GioiTinh`, `NgaySinh`, `Phone`, `DiaChi`) VALUES (?,?,?,?,?,?)");
                 ps.setString(1, hosv);
                 ps.setString(2, tensv);
                 ps.setString(3, gt);
@@ -62,7 +62,7 @@ public class SinhVien_DAL {
         if(operation == 'u')
         {
             try {
-                ps = con.prepareStatement("UPDATE `hocsinh` SET `HoHS`= ?,`TenHS`= ?,`GioiTinh`= ?,`NgaySinh`= ?,`Phone`= ?,`DiaChi`= ? WHERE MaHS = ?");
+                ps = con.prepareStatement("UPDATE `hocvien` SET `HoHV`= ?,`TenHV`= ?,`GioiTinh`= ?,`NgaySinh`= ?,`Phone`= ?,`DiaChi`= ? WHERE MaHV = ?");
                 ps.setString(1, hosv);
                 ps.setString(2, tensv);
                 ps.setString(3, gt);
@@ -85,21 +85,25 @@ public class SinhVien_DAL {
     {
            Connection con = DBConnect.MoKetNoi();
            java.sql.PreparedStatement ps ;
-        
-        
+        //Thêm ràng buộc với bảng điểm
+           
         //i 
-        if(operation == 'd')
-        {
-            try {
-                ps = con.prepareStatement("DELETE FROM `hocsinh` WHERE `MaHS` = ?");
-               ps.setInt(1, id);
-                if(ps.executeUpdate() > 0)
-                {
-                    JOptionPane.showMessageDialog(null, " Xóa Sinh Viên thành công!");
-                    con.close();
+            if(operation == 'd')
+            {
+                 int YESorNO = JOptionPane.showConfirmDialog(null, "Điểm của học viên cũng sẽ bị xóa khỏi bảng","Xóa Học Viên",JOptionPane.OK_CANCEL_OPTION,0);
+                //  System.out.println(Integer.toString(YESorNO));
+                if(YESorNO == JOptionPane.OK_OPTION){
+                    try {
+                    ps = con.prepareStatement("DELETE FROM `hocvien` WHERE `MaHV` = ?");
+                   ps.setInt(1, id);
+                    if(ps.executeUpdate() > 0)
+                    {
+                        JOptionPane.showMessageDialog(null, " Xóa Sinh Viên thành công!");
+                        con.close();
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(SinhVien_DAL.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } catch (SQLException ex) {
-                Logger.getLogger(SinhVien_DAL.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -109,7 +113,7 @@ public class SinhVien_DAL {
       java.sql.PreparedStatement ps ;
       try {
           //truy van mysql
-          ps = con.prepareStatement("SELECT * FROM hocsinh WHERE CONCAT(HoHS,TenHS,Phone,DiaChi) LIKE ?");
+          ps = con.prepareStatement("SELECT * FROM hocvien WHERE CONCAT(HoHV,TenHV,Phone,DiaChi) LIKE ?");
           ps.setString(1, "%"+valueToSearch+"%");
           
           ResultSet rs = ps.executeQuery();

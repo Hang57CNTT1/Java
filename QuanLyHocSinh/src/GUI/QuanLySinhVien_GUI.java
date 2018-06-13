@@ -439,14 +439,14 @@ public class QuanLySinhVien_GUI extends javax.swing.JFrame {
       if(txtMaSV.getText().equals("") || txtHoSV.getText().equals("")  || txtTenSV.getText().equals("")
               || txtSDT.getText().equals("") || txaDiaChi.getText().equals("")
               || DCSV.getDate() == null  )
-      {
-          JOptionPane.showMessageDialog(null, "Không có sinh viên nào được chọn để sửa! ");
-          return false;
-      }
+            {
+                JOptionPane.showMessageDialog(null, "Không có sinh viên nào được chọn để sửa! ");
+                return false;
+            }
       //chọn ngày tương lai
       else if(DCSV.getDate().compareTo(new Date()) > 0){
-          JOptionPane.showMessageDialog(null, "Không tồn tại ngày sinh sau ngày hiện tại!");
-          return false;
+            JOptionPane.showMessageDialog(null, "Không tồn tại ngày sinh sau ngày hiện tại!");
+            return false;
       }
       else
           return true;
@@ -463,21 +463,22 @@ public class QuanLySinhVien_GUI extends javax.swing.JFrame {
         }else if(raNam.isSelected()){
             gt = "Nam";
         }
-        if(verifText() ){
-             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-            //add them jcalendar jar 
-            String ns = dateFormat.format(DCSV.getDate());
-            String phone = txtSDT.getText();
-            String diachi = txaDiaChi.getText();
+        
+            if(verifText() ){
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                           //add them jcalendar jar 
+                           String ns = dateFormat.format(DCSV.getDate());
+                           String phone = txtSDT.getText();
+                           String diachi = txaDiaChi.getText();
 
-            SinhVien_DAL sv = new SinhVien_DAL();
-            SinhVien_DAL.SuaSV('u', id, hosv, tensv, gt, ns, phone, diachi);
-           
-            //tránh trùng lặp dữ liệu trong bảng
-             TableSV.setModel(new DefaultTableModel(null,new Object[]{"Mã Học Viên","Họ Học Viên","Tên Học Viên","Giới Tính","Ngày Sinh","Số Điện Thoại","Địa Chỉ"}));
-               sv_dal.BangSinhVien(TableSV,txtTimKiem.getText());
-              //sv_dal.BangSinhVien(TableSV, "");
-          }
+                           SinhVien_DAL sv = new SinhVien_DAL();
+                           SinhVien_DAL.SuaSV('u', id, hosv, tensv, gt, ns, phone, diachi);
+
+                                   //tránh trùng lặp dữ liệu trong bảng
+                            TableSV.setModel(new DefaultTableModel(null,new Object[]{"Mã Học Viên","Họ Học Viên","Tên Học Viên","Giới Tính","Ngày Sinh","Số Điện Thoại","Địa Chỉ"}));
+                              sv_dal.BangSinhVien(TableSV,txtTimKiem.getText());
+                             //sv_dal.BangSinhVien(TableSV, "");
+                    }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
@@ -488,17 +489,20 @@ public class QuanLySinhVien_GUI extends javax.swing.JFrame {
     private void TableSVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableSVMouseClicked
         // TODO add your handling code here:
         //xét sự kiện click cho table để hiện lên các textfield tương ứng
-           int  rowIndex = TableSV.getSelectedRow();
-            if(TableSV.getValueAt(rowIndex, 3).toString().equals("Nam"))
-            {
-                raNam.setSelected(true);
-                raNu.setSelected(false);
-            }
-            else
-            {
+                int  rowIndex = TableSV.getSelectedRow(); 
+                //lam moi bang 
+                model = (DefaultTableModel) TableSV.getModel();
                 raNu.setSelected(true);
                 raNam.setSelected(false);
-            }
+            if(TableSV.getValueAt(rowIndex, 3).toString().equals("Nam"))
+                {
+                    raNam.setSelected(true);
+
+                }
+                else
+                {
+                    raNu.setSelected(false);
+                }
              txtMaSV.setText( TableSV.getValueAt(rowIndex, 0).toString());
             txtHoSV.setText( TableSV.getValueAt(rowIndex, 1).toString());
             txtTenSV.setText( TableSV.getValueAt(rowIndex, 2).toString());

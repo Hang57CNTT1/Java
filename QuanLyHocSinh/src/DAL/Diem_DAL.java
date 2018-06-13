@@ -118,4 +118,53 @@ static public void SuaDiem(char operation,Integer mahv,Integer  makh,Double diem
                 Logger.getLogger(SinhVien_DAL.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    
+    public  void BangTongKet(JTable table)
+        {
+            Connection con = DBConnect.MoKetNoi();
+            java.sql.PreparedStatement ps ;
+            try {
+                //truy van mysql
+                ps = con.prepareStatement("SELECT `MaHV_ID`,HoHV,TenHV,TenKH,Diem \n" +
+                                                        "FROM `diem`\n" +
+                                                        "INNER JOIN hocvien AS hvdiem ON hvdiem.MAHV = `MaHV_ID`\n" +
+                                                          "INNER JOIN khoahoc AS khdiem on khdiem.MaKH = `MaKH_ID`");
+                    ResultSet rs = ps.executeQuery();
+                //khai bao model
+                DefaultTableModel model = (DefaultTableModel) table.getModel();
+                Object[] row;
+                //gan gia tri cho model 
+                while(rs.next()){
+                      row = new Object[5];
+                      row[0] = rs.getInt(1);
+                      row[1] = rs.getString(2);
+                      row[2] = rs.getString(3);
+                      row[3] = rs.getString(4);
+                      row[4] = rs.getDouble(5);
+                      model.addRow(row);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SinhVien_DAL.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+//    public  boolean KiemTraTonTai(String diemhvkh)
+//      {
+//          boolean isexist = false;
+//          Connection con = DBConnect.MoKetNoi();
+//            java.sql.PreparedStatement ps ;
+//            try {
+//                //truy van mysql
+//                ps = con.prepareStatement("SELECT * FROM `diem` WHERE `MaHV` = ? AND `MaKH`= ?`");
+//                ps.setString(1,diemhvkh);
+//                ResultSet rs = ps.executeQuery();
+//
+//                if(rs.next()){
+//                  isexist = true;
+//                }
+//            } catch (SQLException ex) {
+//                JOptionPane.showMessageDialog(null, "Đã tồn tại điểm của học viên có trong khóa học này!");
+//                Logger.getLogger(SinhVien_DAL.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//                return isexist;
+//            }
 }

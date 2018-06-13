@@ -258,10 +258,15 @@ public class SinhVien_GUI extends javax.swing.JFrame {
             //đếm số lượng sv đưa ra label
             MainForm.lbl_SVCount.setText("Số lượng Sinh Viên = "+Integer.toString(Main_DAL.countData("hocvien")));
             
-            //tránh lặp lại thông tin
-            TableSV.setModel(new DefaultTableModel(null,new Object[]{"Mã Học Viên","Họ HọcViên","Tên HọcViên","Giới Tính","Ngày Sinh","Số Điện Thoại","Địa Chỉ"}));
-            //Thêm thông tin sv hiện lên table của form QuanLySinhVien_GUI
-            sv_dal.BangSinhVien(QuanLySinhVien_GUI.TableSV, "");
+            try{
+                    //tránh lặp lại thông tin
+               TableSV.setModel(new DefaultTableModel(null,new Object[]{"Mã Học Viên","Họ HọcViên","Tên HọcViên","Giới Tính","Ngày Sinh","Số Điện Thoại","Địa Chỉ"}));
+               //Thêm thông tin sv hiện lên table của form QuanLySinhVien_GUI
+               sv_dal.BangSinhVien(QuanLySinhVien_GUI.TableSV, "");
+            }catch(Exception e){
+                       System.out.println(e.getMessage());
+            }
+           
         }
        
     }//GEN-LAST:event_btnThemActionPerformed

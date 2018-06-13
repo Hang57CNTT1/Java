@@ -43,9 +43,10 @@ public class MainForm extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         menuThemKH = new javax.swing.JMenuItem();
         MenuQuanLyKH = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menuShowDiem = new javax.swing.JMenu();
         menuThemDiem = new javax.swing.JMenuItem();
         menuXoaSuaDiem = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trang Chủ");
@@ -209,10 +210,10 @@ public class MainForm extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setForeground(new java.awt.Color(204, 0, 204));
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/score.png"))); // NOI18N
-        jMenu2.setText("Điểm");
-        jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        menuShowDiem.setForeground(new java.awt.Color(204, 0, 204));
+        menuShowDiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/score.png"))); // NOI18N
+        menuShowDiem.setText("Điểm");
+        menuShowDiem.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
 
         menuThemDiem.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         menuThemDiem.setForeground(new java.awt.Color(0, 204, 255));
@@ -223,7 +224,7 @@ public class MainForm extends javax.swing.JFrame {
                 menuThemDiemActionPerformed(evt);
             }
         });
-        jMenu2.add(menuThemDiem);
+        menuShowDiem.add(menuThemDiem);
 
         menuXoaSuaDiem.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         menuXoaSuaDiem.setForeground(new java.awt.Color(0, 204, 204));
@@ -234,9 +235,20 @@ public class MainForm extends javax.swing.JFrame {
                 menuXoaSuaDiemActionPerformed(evt);
             }
         });
-        jMenu2.add(menuXoaSuaDiem);
+        menuShowDiem.add(menuXoaSuaDiem);
 
-        jMenuBar1.add(jMenu2);
+        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jMenuItem1.setForeground(new java.awt.Color(0, 204, 204));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/binoculars.png"))); // NOI18N
+        jMenuItem1.setText("Xem Điểm ");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuShowDiem.add(jMenuItem1);
+
+        jMenuBar1.add(menuShowDiem);
 
         setJMenuBar(jMenuBar1);
 
@@ -314,6 +326,15 @@ public class MainForm extends javax.swing.JFrame {
          td.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_menuThemDiemActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+             ShowDiem_GUI  sd = new ShowDiem_GUI();
+             sd.setVisible(true);
+             sd.setLocationRelativeTo(null);
+               sd.pack();
+             //Chỉ tắt form thông tin sv
+             sd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -353,8 +374,8 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuQuanLyKH;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -363,6 +384,7 @@ public class MainForm extends javax.swing.JFrame {
     public static javax.swing.JLabel lbl_KHCount;
     public static javax.swing.JLabel lbl_SVCount;
     private javax.swing.JMenuItem menuQuanLi;
+    private javax.swing.JMenu menuShowDiem;
     private javax.swing.JMenuItem menuThemDiem;
     private javax.swing.JMenuItem menuThemKH;
     private javax.swing.JMenuItem menuXoaSuaDiem;

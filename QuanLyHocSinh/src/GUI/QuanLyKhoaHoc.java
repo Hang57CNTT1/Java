@@ -169,17 +169,17 @@ public class QuanLyKhoaHoc extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(btnThemKH))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(SnipperTLKH, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(SnipperTLKH, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(btnThemKH)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)))
                 .addComponent(btnXoa)
                 .addGap(25, 25, 25))
         );
@@ -313,7 +313,7 @@ public class QuanLyKhoaHoc extends javax.swing.JFrame {
           return true;
     } 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-         if(kh_dal.KiemTraTonTai(txtTenKH.getText())){
+         if(verifText()){
                 
                       int makh = Integer.valueOf(txtMaKH.getText());
                       String tenkh = txtTenKH.getText();
@@ -324,9 +324,6 @@ public class QuanLyKhoaHoc extends javax.swing.JFrame {
                         //Thêm thông tin sv hiện lên table của form QuanLyKhoaHoc_GUI
                         kh_dal.BangKhoaHoc(QuanLyKhoaHoc.Table_KH);
          }
-            else{
-                JOptionPane.showMessageDialog(null, "Khóa Học Đã Tồn Tại");
-            }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void Table_KHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_KHMouseClicked

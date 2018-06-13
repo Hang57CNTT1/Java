@@ -298,11 +298,14 @@ public class Diem_GUI extends javax.swing.JFrame {
                String ghichu = txtghichu.getText();
                //System.out.println(makh);
                diem_dal.ThemDiem('i', mahv, makh,diemkh, ghichu);
-               //tránh trùng lặp
-                Table_Diem.setModel(new DefaultTableModel(null,new Object[]{"Mã Học Viên","Mã Khóa Học","Điểm","Ghi Chú"}));
-               //cập nhật trong bảng của form Diem_Update_GUI
-               diem_dal.BangDiem(Diem_Update_GUI.Table_Diem);
-              
+               try{
+                    //tránh trùng lặp
+                        Table_Diem.setModel(new DefaultTableModel(null,new Object[]{"Mã Học Viên","Mã Khóa Học","Điểm","Ghi Chú"}));
+                       //cập nhật trong bảng của form Diem_Update_GUI
+                       diem_dal.BangDiem(Diem_Update_GUI.Table_Diem);
+               }catch(Exception e){
+                    System.out.println(e.getMessage());
+               }
              }
             else{
                 JOptionPane.showMessageDialog(null, "Chưa chọn học viên  cần thêm!");
@@ -322,30 +325,7 @@ public class Diem_GUI extends javax.swing.JFrame {
         //xét sự kiện click cho table để hiện lên các textfield tương ứng
           int  rowIndex = Table_DiemQL.getSelectedRow();
           txtMaHV.setText( Table_DiemQL.getValueAt(rowIndex, 0).toString());
-//        int  rowIndex = TableSV.getSelectedRow();
-//        if(model.getValueAt(rowIndex, 3).toString().equals("Nam"))
-//        {
-//            raNam.setSelected(true);
-//            raNu.setSelected(false);
-//        }
-//        else
-//        {
-//            raNu.setSelected(true);
-//            raNam.setSelected(false);
-//        }
-//        txtMaSV.setText( model.getValueAt(rowIndex, 0).toString());
-//        txtHoSV.setText( model.getValueAt(rowIndex, 1).toString());
-//        txtTenSV.setText( model.getValueAt(rowIndex, 2).toString());
-//        txtSDT.setText( model.getValueAt(rowIndex, 5).toString());
-//        txaDiaChi.setText( model.getValueAt(rowIndex, 6).toString());
-//
-//        Date ns;
-//        try {
-//            ns = new SimpleDateFormat("dd-MM-yyyy").parse(model.getValueAt(rowIndex, 4).toString());
-//            DCSV.setDate(ns);
-//        } catch (ParseException ex) {
-//            Logger.getLogger(QuanLySinhVien_GUI.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+
     }//GEN-LAST:event_Table_DiemQLMouseClicked
 
     private void Table_DiemQLKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_DiemQLKeyReleased
